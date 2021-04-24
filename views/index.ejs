@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> 
+</head>
+<body>
+    <h1>Character Creator</h1>
+
+    <h2>Active Characters:  /4</h2>
+
+    <form action="/createChar" method="POST">
+        <input type="text" placeholder="Character Name" name="charName">
+
+        <select name="charClass">
+            <option value="brawler">Brawler</option>
+            <option value="tank">Tank</option>
+            <option value="direct">Direct</option>
+            <option value="healer">Healer</option>
+        </select>
+
+        <input type="submit">
+    </form>
+    <section class="card-container">
+    
+        <% for(let i=0; i<charArray.length; i++) { %>
+            <% if(charArray[i].activeChar === true) { %> 
+                <div class="character-card">
+                    <span class="active-char"><%= charArray[i].character %></span>
+                    <span class="delete-btn">Delete</span>
+                </div>
+            <% } else { %>
+                <div class="character-card">
+                    <span><%= charArray[i].character %></span>
+                    <span class="delete-btn">Delete</span>
+                </div>
+            <% } %>
+        <% } %> 
+        
+        
+    </section>
+    
+
+    <script src="js/main.js"></script>
+</body>
+</html>

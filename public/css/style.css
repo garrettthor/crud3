@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background: darkslategray;
+}
+
+h1, h2 {
+    color: white;
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+}
+
+form {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    margin: 10px;
+}
+
+input {
+    font-family: 'IM Fell English SC', serif;
+    font-size: 20px;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border: 3px solid gray;
+}
+
+.character-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    background: gray;
+    border: 1px solid darkgray;
+    margin: 10px;
+    padding: 5px;
+    height: 200px;
+    width: 150px;
+}
+
+.active-char {
+    color: goldenrod;
+    text-decoration: underline;
+}
+
+.delete-btn {
+    color: darkred;
+}
+.delete-btn:hover {
+    color: red;
+    cursor: pointer;
+}
