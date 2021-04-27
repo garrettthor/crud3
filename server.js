@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 const PORT = 1984
+require('dotenv').config()
 
 let db,
-    dbConnectionStr = 'mongodb+srv://crud3:crud3@cluster0.fsxku.mongodb.net/database3?retryWrites=true&w=majority',
+    dbConnectionStr = process.env.DB_STRING,
     dbName = 'database3'
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
@@ -22,19 +23,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
-app.get('/', async (req, res) => {
-    // try {
-    //     const charArray = await db.collection('characters').find().toArray()
-    //     const activeCharCount = await db.collection('characters').countDocuments({ activeChar: true})
-    //     res.render('index.ejs', {targetText: charArray, count: activeCharCount})
-    // } catch (err) {
-    //     console.log(err)
-    // }
-    
-
+app.get('/', (req, res) => {
     db.collection('characters').find().toArray()
     .then(data => {
-        res.render('index.ejs', {charArray: data})
+        db.collection('characters').countDocuments({activeChar: true})
+        .then(activeTeam => {
+            res.render('index.ejs', {charArray: data, active: activeTeam})
+        })
     })
     .catch(err => {
         console.log(err)
